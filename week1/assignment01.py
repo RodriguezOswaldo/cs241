@@ -15,7 +15,7 @@ while True:
     guess = int(input("\nPlease enter a guess: "))
     if mynumber == guess:
         print('Congratulations. You guessed it!')
-        print(f'It took you {count} guesses.')
+        # print(f'It took you {count} guesses.')
         play = None
         count = 0
         mynumber = random.randint(1, 100)
