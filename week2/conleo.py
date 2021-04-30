@@ -4,6 +4,5 @@ def this_function():
     return esta_variable
 
 
-
-llamar_function = this_function()
-print(f"esta es la function que estoy llamando {llamar_function}")
+call_function = this_function()
+print(f"esta es la function que estoy llamando {call_function}")
