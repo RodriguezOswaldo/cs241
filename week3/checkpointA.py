@@ -21,8 +21,8 @@ class Student:
 
 
 def main():
-    student = prompt_user()
-    display_student(student)
+    person = prompt_user()
+    display_student(person)
 
 
 if __name__ == '__main__':
