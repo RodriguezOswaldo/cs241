@@ -13,7 +13,7 @@ while add != 0:
         elif add > 0 and (add % 2) != 0:
             odds.append(add)
     except ValueError:
-            print('add an odd or even number')
+            print('Enter a valid number')
 print()
 print('Even numbers:')
 for i in even:
