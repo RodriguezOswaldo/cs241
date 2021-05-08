@@ -44,7 +44,7 @@ class Robot:
         return
 
     def status(self):
-        return print(f'{self.x_coordinate} , {self.y_coordinate} - {self.fuel_amount}')
+        return print(f'{self.x_coordinate} , {self.y_coordinate} - Fuel: {self.fuel_amount}')
 
     def fire_laser(self):
         if self.fuel_amount <= 0:
@@ -52,18 +52,34 @@ class Robot:
         else:
             print("Pew! Pew!")
             self.fuel_amount -= 15
-        return self.fuel_amount
+        return
 
 
-# def interact_with_robot():
+def main():
 
-    message = ''
-    while message != 'quit':
-        message == input('Give the robot a command: ')
+    new_robot = Robot()
+    message = ""
+    while message != "quit":
+
+        message = input("Give the robot a command: ")
+        # check what is in command to perform specific action
+        if message == "left":
+            new_robot.move_left()
+        elif message == "right":
+            new_robot.move_right()
+        elif message == "up":
+            new_robot.move_up()
+        elif message == "down":
+            new_robot.move_down()
+        elif message == "fire":
+            new_robot.fire_laser()
+        elif message == "status":
+            new_robot.status()
+        elif message == "quit":
+            print("Goodbye")
+        else:
+            print('Enter valid command')
 
 
-# interact_with_robot()
-my_robot = Robot()
-mine = my_robot.fire_laser()
-fuel = my_robot.fuel_amount
-print(mine)
+if __name__ == "__main__":
+    main()
