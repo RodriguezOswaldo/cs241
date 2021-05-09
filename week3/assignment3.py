@@ -26,7 +26,7 @@ class Robot:
     def move_down(self):
         # Down should add 1 to the y-coordinate,
         if self.fuel_amount <= 0:
-            print('Insufficient fuel to perform action')
+            print("Insufficient fuel to perform action")
         else:
             # When told to move, the robot's fuel should decrease by 5,
             self.fuel_amount -= 5
@@ -36,7 +36,7 @@ class Robot:
     def move_up(self):
         # Up should subtract 1 to the y-coordinate,
         if self.fuel_amount <= 0:
-            print('Insufficient fuel to perform action')
+            print("Insufficient fuel to perform action")
         else:
             # When told to move, the robot's fuel should decrease by 5,
             self.fuel_amount -= 5
@@ -44,11 +44,12 @@ class Robot:
         return
 
     def status(self):
-        return print(f'{self.x_coordinate} , {self.y_coordinate} - Fuel: {self.fuel_amount}')
+         print(f'({self.x_coordinate}, {self.y_coordinate}) - Fuel: {self.fuel_amount}')
+         return
 
     def fire_laser(self):
         if self.fuel_amount <= 0:
-            print('Insufficient fuel to perform action')
+            print("Insufficient fuel to perform action")
         else:
             print("Pew! Pew!")
             self.fuel_amount -= 15
@@ -61,7 +62,7 @@ def main():
     message = ""
     while message != "quit":
 
-        message = input("Give the robot a command: ")
+        message = input("Enter command: ")
         # check what is in command to perform specific action
         if message == "left":
             new_robot.move_left()
@@ -76,9 +77,8 @@ def main():
         elif message == "status":
             new_robot.status()
         elif message == "quit":
-            print("Goodbye")
-        else:
-            print('Enter valid command')
+            print("Goodbye.")
+
 
 
 if __name__ == "__main__":
