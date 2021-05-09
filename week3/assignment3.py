@@ -48,7 +48,7 @@ class Robot:
          return
 
     def fire_laser(self):
-        if self.fuel_amount <= 0:
+        if self.fuel_amount <= 15:
             print("Insufficient fuel to perform action")
         else:
             print("Pew! Pew!")
