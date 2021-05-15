@@ -13,3 +13,10 @@ class Song:
 
         playlist = deque()
         playlist.append(self.title)
+        for mine in playlist:
+            print(mine)
+
+
+
+song = Song()
+song.prompt()
