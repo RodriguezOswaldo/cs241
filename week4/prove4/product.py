@@ -13,10 +13,84 @@ class Product:
         print(f'{self.get_total_price()}')
 
 
-new_product = Product()
-one = new_product.name = input('Name: ')
-two = new_product.Price = float(input('Price: '))
-three = new_product.Quantity = int(input('Quantity: '))
-four = new_product.ID = input('ID: ')
+class Order:
+    def __init__(self):
+        pass
 
-new_product.display()
+
+class Customer:
+    def __init__(self):
+        pass
+
+
+def main():
+    print("### Testing Products ###")
+    p1 = Product("1238223", "Sword", 1899.99, 10)
+
+    print("Id: {}".format(p1.id))
+    print("Name: {}".format(p1.name))
+    print("Price: {}".format(p1.price))
+    print("Quantity: {}".format(p1.quantity))
+
+    p1.display()
+
+    print()
+
+    p2 = Product("838ab883", "Shield", 989.75, 6)
+    print("Id: {}".format(p2.id))
+    print("Name: {}".format(p2.name))
+    print("Price: {}".format(p2.price))
+    print("Quantity: {}".format(p2.quantity))
+
+    p2.display()
+
+    print("\n### Testing Orders ###")
+    # Now test Orders
+    order1 = Order()
+    order1.id = "1138"
+    order1.add_product(p1)
+    order1.add_product(p2)
+
+    order1.display_receipt()
+
+    print("\n### Testing Customers ###")
+    # Now test customers
+    c = Customer()
+    c.id = "aa32"
+    c.name = "Gandalf"
+    c.add_order(order1)
+
+    c.display_summary()
+
+    print()
+    c.display_receipts()
+
+    # Add another product and order and display again
+
+    p3 = Product("2387127", "The Ring", 1000000, 1)
+    p4 = Product("1828191", "Wizard Staff", 199.99, 3)
+
+    order2 = Order()
+    order2.id = "1277182"
+    order2.add_product(p3)
+    order2.add_product(p4)
+
+    c.add_order(order2)
+
+    print()
+    c.display_summary()
+
+    print()
+    c.display_receipts()
+
+
+if __name__ == "__main__":
+    main()
+
+# new_product = Product()
+# one = new_product.name = input('Name: ')
+# two = new_product.Price = float(input('Price: '))
+# three = new_product.Quantity = int(input('Quantity: '))
+# four = new_product.ID = input('ID: ')
+#
+# new_product.display()
