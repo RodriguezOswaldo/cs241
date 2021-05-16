@@ -56,9 +56,6 @@ class Customer:
             order_count += my_order
         return order_count
 
-    def get_total(self):
-        pass
-
     def add_order(self, order):
         self.orders.append(order)
 
