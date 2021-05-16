@@ -1,29 +1,73 @@
 class Product:
-    def __init__(self):
-        self.ID = None
-        self.name = ''
-        self.Price = None
-        self.Quantity = None
+    def __init__(self, id, name, price, qy):
+        self.id = id
+        self.name = name
+        self.price = price
+        self.quantity = qy
 
     def get_total_price(self):
-        total_price = self.Price * self.Quantity
+        total_price = self.price * self.quantity
         return total_price
 
     def display(self):
-        print(f'{self.get_total_price()}')
+        print(f'{self.name} ({self.quantity}) - ${round(self.get_total_price(), 2)}')
 
 
 class Order:
     def __init__(self):
-        pass
+        self.id = ""
+        self.products = []
+
+    def get_subtotal(self):
+        sub_total = 0
+        for p in self.products:
+            sub_total += p.get_total_price()
+        return sub_total
+
+    def get_tax(self):
+        tax = self.get_subtotal() * 0.065
+        return tax
+
+    def get_total(self):
+        total = self.get_tax() + self.get_subtotal()
+        return total
+
+    def add_product(self, product):
+        self.products.append(product)
+
+    def display_receipt(self):
+        print(f'Order: {self.id}')
+        for p in self.products:
+            p.display()
+        print(f'Subtotal: ${self.get_subtotal()}')
+        print(f'Tax: ${round(self.get_tax(),2)}')
+        print(f'Total: ${round(self.get_total(),2)}')
 
 
 class Customer:
     def __init__(self):
+        self.id = 0
+        self.name = ''
+        self.order = Order()
+
+    def get_order_count(self, ):
+        pass
+
+    def get_total(self, ):
+        pass
+
+    def add_order(self, order):
+        pass
+
+    def display_summary(self, ):
+        pass
+
+    def display_receipts(self, ):
         pass
 
 
 def main():
+
     print("### Testing Products ###")
     p1 = Product("1238223", "Sword", 1899.99, 10)
 
@@ -86,11 +130,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# new_product = Product()
-# one = new_product.name = input('Name: ')
-# two = new_product.Price = float(input('Price: '))
-# three = new_product.Quantity = int(input('Quantity: '))
-# four = new_product.ID = input('ID: ')
-#
-# new_product.display()
