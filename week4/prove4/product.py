@@ -9,9 +9,10 @@ class Product:
         self.quantity = qy
 
     def get_total_price(self):
-        total_price = self.price * self.quantity
-        return total_price
+        return self.quantity * self.price
 
     def display(self):
-        print(f'{self.name} ({self.quantity}) - ${round(self.get_total_price(), 2)}')
+        txt = "{} ({}) - ${:.2f}"
+        print(txt.format(self.name, self.quantity, self.get_total_price()))
+        # print(f'{self.name} ({self.quantity}) - ${self.get_total_price()}')
 

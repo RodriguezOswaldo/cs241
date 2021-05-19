@@ -4,7 +4,6 @@ from customer import Customer
 
 
 def main():
-
     print("### Testing Products ###")
     p1 = Product("1238223", "Sword", 1899.99, 10)
 
@@ -43,7 +42,6 @@ def main():
 
     c.display_summary()
 
-    print()
     c.display_receipts()
 
     # Add another product and order and display again
@@ -57,11 +55,9 @@ def main():
     order2.add_product(p4)
 
     c.add_order(order2)
-
     print()
     c.display_summary()
 
-    print()
     c.display_receipts()
 
 

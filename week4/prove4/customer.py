@@ -1,7 +1,3 @@
-from product import Product
-from order import Order
-
-
 class Customer:
     def __init__(self):
         self.id = 0
@@ -23,18 +19,25 @@ class Customer:
         for order in self.orders:
             total_order += order.get_total()
             add += 1
-
-        print(f'Summary for customer \'{self.id}\'')
+        print(f'Summary for customer \'{self.id}\':')
         print(f'Name: {self.name}')
-        print(f'Order: {add}')
-        print(f'Total: ${round(total_order,2)}')
+        print(f'Orders: {add}')
+        txt = 'Total: ${:.2f}'
+        print(txt.format(round(total_order, 2)))
+        print()
 
     def display_receipts(self):
         print(f'Detailed receipts for customer \'{self.id}\':')
         print(f'Name: {self.name}')
-        print()
 
         for o in self.orders:
-            o.display_receipt()
             print()
+            o.display_receipt()
+            # if self.orders.index[0]:
+            #     o.display_receipt()
+            #     print()
+            # else:
+            #     o.display_receipt()
 
+        # [o.display_receipt() for o in self.orders]
+        # print()
