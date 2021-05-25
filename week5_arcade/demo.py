@@ -13,7 +13,7 @@ class Box:
         self.dx = 1
 
     def draw(self):
-        arcade.draw_rectangle_filled(self.x, self.y, 50, 20, arcade.color.AIR_FORCE_BLUE)
+        arcade.draw_rectangle_filled(self.x, self.y, 50, 40, arcade.color.AIR_FORCE_BLUE)
 
     def advance(self):
         if self.x > SCREEN_WIDTH:
