@@ -57,23 +57,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-# print('First Book')
-# print('-------------')
-# mybook = TextBook()
-# mybook.prompt_book_info()
-# mybook.prompt_subject()
-# mybook.display_book_info()
-# mybook.display_subject()
-# print('\nSecond Book')
-# print('-------------')
-# illustrator = PictureBook()
-# illustrator.prompt_book_info()
-# illustrator.prompt_illustrator()
-# illustrator.display_book_info()
-# illustrator.display_illustrator()
-
-# my_textbook = TextBook()
-# my_textbook.prompt_book_info()
-# my_textbook.prompt_subject()
-# my_textbook.display_book_info()
-# my_textbook.display_subject()
