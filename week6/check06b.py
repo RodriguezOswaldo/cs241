@@ -24,7 +24,7 @@ class SmartPhone(Phone):
 
     def display(self):
         print('\nPhone info: ')
-        self.display()
+        Phone.display(self)
         print(f'{self.email}')
 
 
@@ -38,7 +38,7 @@ def main():
     cellphone = SmartPhone()
     print('\nSmart phone:')
     cellphone.prompt()
-    cellphone.displayme()
+    cellphone.display()
 
 
 if __name__ == '__main__':
