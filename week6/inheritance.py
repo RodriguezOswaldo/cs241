@@ -14,7 +14,9 @@ class Fish:
 
 
 class Trout(Fish):
-    pass
+    def __init__(self, water='freshwater'):
+        self.water = water
+        super().__init__(self)
 
 
 class Clownfish(Fish):
@@ -33,11 +35,27 @@ class Shark(Fish):
         print("The shark cannot swim backwards, but can sink backwards.")
 
 
+class Coral:
+    def community(self):
+        print('Coral lives in a community.')
+
+
+class Anemone:
+    def protecting_clownfish(self):
+        print('The anemone is protecting the clownfish.')
+
+
+class CoralReef(Coral, Anemone):
+    pass
+
+
 print('First Fish')
 print('-------------')
-terry = Trout('Terry')
+terry = Trout()
+terry.first_name = "Terry"
 print(f'{terry.first_name} - {terry.last_name}')
 print(f'{terry.skeleton} - {terry.eyelids}')
+print(f'{terry.first_name} swims in {terry.water}')
 terry.swim()
 terry.swim_backwards()
 
@@ -56,3 +74,10 @@ print(f'{sharky.first_name} - {sharky.last_name}')
 print(f'{sharky.skeleton} - {sharky.eyelids}')
 sharky.swim()
 sharky.swim_backwards()
+
+print('\nFourth Fish')
+print('-------------')
+
+coral = CoralReef()
+coral.community()
+coral.protecting_clownfish()
