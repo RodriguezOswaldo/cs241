@@ -23,7 +23,7 @@ class SmartPhone(Phone):
         self.email = input('Email: ')
 
     def display(self):
-        print('\nPhone info: ')
+        print('\nPhone info:')
         Phone.display(self)
         print(f'{self.email}')
 
