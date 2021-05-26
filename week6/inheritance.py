@@ -75,6 +75,8 @@ print(f'{sharky.skeleton} - {sharky.eyelids}')
 sharky.swim()
 sharky.swim_backwards()
 
+
+
 print('\nFourth Fish')
 print('-------------')
 
