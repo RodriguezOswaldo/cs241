@@ -10,7 +10,7 @@ class Book:
         self.publication_year = int(input('Publication Year: '))
 
     def display_book_info(self):
-        print(f'{self.title} ({self.publication_year}) by {self.author}')
+        print(f'\n{self.title} ({self.publication_year}) by {self.author}')
 
 
 class TextBook(Book):
@@ -19,7 +19,7 @@ class TextBook(Book):
         self.subject = ''
 
     def prompt_subject(self):
-        self.subject = input('Subject:')
+        self.subject = input('Subject: ')
 
     def display_subject(self):
         print(f'Subject: {self.subject}')
@@ -38,20 +38,16 @@ class PictureBook(Book):
 
 
 def main():
-    print('First Book')
-    print('-------------')
     mybook = Book()
     mybook.prompt_book_info()
     mybook.display_book_info()
-    print('\nSecond Book')
-    print('-------------')
-    my_textbook = TextBook
+    print()
+    my_textbook = TextBook()
     my_textbook.prompt_book_info()
     my_textbook.prompt_subject()
     my_textbook.display_book_info()
     my_textbook.display_subject()
-    print('\nThird Book')
-    print('-------------')
+    print()
     illustrator = PictureBook()
     illustrator.prompt_book_info()
     illustrator.prompt_illustrator()
@@ -75,3 +71,9 @@ if __name__ == "__main__":
 # illustrator.prompt_illustrator()
 # illustrator.display_book_info()
 # illustrator.display_illustrator()
+
+# my_textbook = TextBook()
+# my_textbook.prompt_book_info()
+# my_textbook.prompt_subject()
+# my_textbook.display_book_info()
+# my_textbook.display_subject()
