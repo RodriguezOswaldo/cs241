@@ -38,10 +38,10 @@ class Ball:
         self.velocity.dy *= -1
 
     def restart(self):
-        # self.center.x = SCREEN_WIDTH / random.uniform(1.0, 30.0)
+        self.center.x = SCREEN_WIDTH / random.uniform(1.0, 30.0)
         self.center.y = SCREEN_HEIGHT / random.uniform(1.0, 30.0)
         self.velocity.dx = random.uniform(1.0, 7.0)
-        self.velocity.dy = random.uniform(-4.0, 7.0)
+        self.velocity.dy = random.uniform(1.0, 7.0)
 
 
 class Paddle:
