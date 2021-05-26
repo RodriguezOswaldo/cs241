@@ -24,7 +24,7 @@ class SmartPhone(Phone):
 
     def display(self):
         print('\nPhone info:')
-        Phone.display(self)
+        super().display()
         print(f'{self.email}')
 
 

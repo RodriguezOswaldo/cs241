@@ -22,7 +22,7 @@ class Circle(Point):
         self.radius = int(input('Enter radius: '))
 
     def display(self):
-        Point.display(self)
+        super().display()
         print(f'Radius: {self.radius}')
 
 
