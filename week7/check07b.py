@@ -6,7 +6,7 @@ Demonstrates abstract base classes.
 """
 
 # Import anything you need for Abstract Base Classes / methods
-from abc import ABC
+from abc import ABC, abstractmethod
 
 
 # convert this to an ABC
@@ -18,12 +18,28 @@ class Shape(ABC):
         print("{} - {:.2f}".format(self.name, self.get_area()))
 
     # Add an abstractmethod here called get_area
+    @abstractmethod
     def get_area(self):
         raise NotImplementedError('Subclass must implement abstract method')
 
-# TODO: Create a Circle class here that derives from Shape
+
+# Create a Circle class here that derives from Shape
+class Circle(Shape):
+    def __init__(self):
+        self.name = 'Circle'
+
+    def get_area(self):
+        pass
+
 
 # TODO: Create a Rectangle class here that derives from Shape
+class Circle(Shape):
+    def __init__(self):
+        self.name = 'Rectangle'
+
+    def get_area(self):
+        pass
+
 
 def main():
 
@@ -48,6 +64,7 @@ def main():
     # Done entering shapes, now lets print them all out:
 
     # TODO: Loop through each shape in the list, and call its display function
+
 
 if __name__ == "__main__":
     main()
