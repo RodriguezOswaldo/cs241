@@ -25,25 +25,29 @@ class Shape(ABC):
 
 # Create a Circle class here that derives from Shape
 class Circle(Shape):
-    def __init__(self):
+    def __init__(self, radius):
         self.name = 'Circle'
+        self.radius = radius
 
     def get_area(self):
-        pass
+        return 3.14 * self.radius * self.radius
 
 
 # TODO: Create a Rectangle class here that derives from Shape
-class Circle(Shape):
-    def __init__(self):
+class Rectangle(Shape):
+    def __init__(self, length, width):
         self.name = 'Rectangle'
+        self.length = length
+        self.width = width
 
     def get_area(self):
-        pass
+        return self.length * self.width
 
 
 def main():
 
     # TODO: Declare your list of shapes here
+    shapes = []
 
     command = ""
 
@@ -53,17 +57,26 @@ def main():
         if command == "c":
             radius = float(input("Enter the radius: "))
             # TODO: Declare your Circle here, set its radius, and
+            circle = Circle(radius)
+            circle.get_area()
             # add it to the list
+            shapes.append(circle)
 
         elif command == "r":
             length = float(input("Enter the length: "))
             width = float(input("Enter the width: "))
             # TODO: Declare your Rectangle here, set its length
             # and width, and add it to the list
+            rectangle = Rectangle(length, width)
+            rectangle.get_area()
+            # add it to the list
+            shapes.append(rectangle)
 
     # Done entering shapes, now lets print them all out:
 
     # TODO: Loop through each shape in the list, and call its display function
+    for shape in shapes:
+        shape.display()
 
 
 if __name__ == "__main__":
