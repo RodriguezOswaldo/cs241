@@ -46,7 +46,7 @@ class Rectangle(Shape):
 
 def main():
 
-    # TODO: Declare your list of shapes here
+    # Declare your list of shapes here
     shapes = []
 
     command = ""
@@ -56,7 +56,7 @@ def main():
 
         if command == "c":
             radius = float(input("Enter the radius: "))
-            # TODO: Declare your Circle here, set its radius, and
+            # Declare your Circle here, set its radius, and
             circle = Circle(radius)
             circle.get_area()
             # add it to the list
@@ -65,7 +65,7 @@ def main():
         elif command == "r":
             length = float(input("Enter the length: "))
             width = float(input("Enter the width: "))
-            # TODO: Declare your Rectangle here, set its length
+            # Declare your Rectangle here, set its length
             # and width, and add it to the list
             rectangle = Rectangle(length, width)
             rectangle.get_area()
@@ -74,7 +74,7 @@ def main():
 
     # Done entering shapes, now lets print them all out:
 
-    # TODO: Loop through each shape in the list, and call its display function
+    #  Loop through each shape in the list, and call its display function
     for shape in shapes:
         shape.display()
 
