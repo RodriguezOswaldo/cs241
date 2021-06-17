@@ -1,8 +1,11 @@
 class BalanceError(Exception):
     pass
 
+
 class OutOfChecksError(Exception):
     pass
+
+
 class CheckingAccount:
     def __init__(self, starting_balance, num_checks):
         self.balance = starting_balance
