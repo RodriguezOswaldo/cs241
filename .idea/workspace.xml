@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e0bf680-33ab-4a1b-988d-25b940ab8f73" name="Default Changelist" comment="">
+    <list default="true" id="3e0bf680-33ab-4a1b-988d-25b940ab8f73" name="Default Changelist" comment="new files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/week9/team_exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/week9/team_exceptions.py" afterDir="false" />
     </list>
@@ -192,6 +192,14 @@
       <workItem from="1623806384044" duration="334000" />
       <workItem from="1623814935384" duration="206000" />
     </task>
+    <task id="LOCAL-00001" summary="new files">
+      <created>1623957812995</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1623957812995</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +216,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new files" />
+    <option name="LAST_COMMIT_MESSAGE" value="new files" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/cs241$Asteroids.coverage" NAME="Asteroids Coverage Results" MODIFIED="1623734356506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week8" />
@@ -261,6 +273,6 @@
     <SUITE FILE_PATH="coverage/cs241$practice_classes.coverage" NAME="practice_classes Coverage Results" MODIFIED="1620789514902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week3" />
     <SUITE FILE_PATH="coverage/cs241$data_structures.coverage" NAME="data-structures Coverage Results" MODIFIED="1621112779628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week4" />
     <SUITE FILE_PATH="coverage/cs241$check08b.coverage" NAME="check08b Coverage Results" MODIFIED="1623289520119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week8" />
-    <SUITE FILE_PATH="coverage/cs241$team_exceptions.coverage" NAME="team_exceptions Coverage Results" MODIFIED="1623957790243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week9" />
+    <SUITE FILE_PATH="coverage/cs241$team_exceptions.coverage" NAME="team_exceptions Coverage Results" MODIFIED="1623957925902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week9" />
   </component>
 </project>
