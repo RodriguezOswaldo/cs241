@@ -23,3 +23,7 @@ print(fish)
 # remove the last item in the list or the one in the specified index
 print(fish.pop(3))
 print(fish)
+
+# to copy a list and re-use
+fish_2 = fish.copy()
+print(fish_2)
