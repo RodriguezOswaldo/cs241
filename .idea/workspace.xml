@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e0bf680-33ab-4a1b-988d-25b940ab8f73" name="Default Changelist" comment="Dictionaries">
-      <change beforePath="$PROJECT_DIR$/week10/lists.py" beforeDir="false" afterPath="$PROJECT_DIR$/week10/lists.py" afterDir="false" />
+    <list default="true" id="3e0bf680-33ab-4a1b-988d-25b940ab8f73" name="Default Changelist" comment="Lists methods">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/week10/strings.py" beforeDir="false" afterPath="$PROJECT_DIR$/week10/strings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +50,7 @@
       <recent name="$PROJECT_DIR$/week8/asteroids" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.lists">
+  <component name="RunManager" selected="Python.strings">
     <configuration name="Asteroids" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="cs241" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -94,7 +95,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="skeet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="strings" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="cs241" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -102,12 +103,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/week6" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/week10" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/week6/skeet.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/week10/strings.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -162,11 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.strings" />
         <item itemvalue="Python.lists" />
         <item itemvalue="Python.team_exceptions" />
         <item itemvalue="Python.Asteroids" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.skeet" />
       </list>
     </recent_temporary>
   </component>
@@ -190,7 +191,7 @@
       <workItem from="1623778888473" duration="344000" />
       <workItem from="1623806384044" duration="334000" />
       <workItem from="1623814935384" duration="206000" />
-      <workItem from="1624675464581" duration="207000" />
+      <workItem from="1624675464581" duration="1882000" />
     </task>
     <task id="LOCAL-00001" summary="new files">
       <created>1623957812995</created>
@@ -199,7 +200,21 @@
       <option name="project" value="LOCAL" />
       <updated>1623957812995</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Lists methods">
+      <created>1624675685085</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1624675685085</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Lists methods">
+      <created>1624675947982</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1624675947982</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,7 +234,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new files" />
-    <option name="LAST_COMMIT_MESSAGE" value="new files" />
+    <MESSAGE value="Lists methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lists methods" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/cs241$Asteroids.coverage" NAME="Asteroids Coverage Results" MODIFIED="1623734356506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week8" />
@@ -270,8 +286,9 @@
     <SUITE FILE_PATH="coverage/cs241$treenode.coverage" NAME="treenode Coverage Results" MODIFIED="1623470404943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week8" />
     <SUITE FILE_PATH="coverage/cs241$hash_tables.coverage" NAME="hash_tables Coverage Results" MODIFIED="1624066836932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week9" />
     <SUITE FILE_PATH="coverage/cs241$getterssetters.coverage" NAME="getterssetters Coverage Results" MODIFIED="1623208864509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week8" />
+    <SUITE FILE_PATH="coverage/cs241$strings.coverage" NAME="strings Coverage Results" MODIFIED="1624677540098" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week10" />
     <SUITE FILE_PATH="coverage/cs241$practice.coverage" NAME="practice Coverage Results" MODIFIED="1620785120718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week4" />
-    <SUITE FILE_PATH="coverage/cs241$lists.coverage" NAME="lists Coverage Results" MODIFIED="1624675492093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week10" />
+    <SUITE FILE_PATH="coverage/cs241$lists.coverage" NAME="lists Coverage Results" MODIFIED="1624675852761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week10" />
     <SUITE FILE_PATH="coverage/cs241$practice_classes.coverage" NAME="practice_classes Coverage Results" MODIFIED="1620789514902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week3" />
     <SUITE FILE_PATH="coverage/cs241$data_structures.coverage" NAME="data-structures Coverage Results" MODIFIED="1621112779628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week4" />
     <SUITE FILE_PATH="coverage/cs241$check08b.coverage" NAME="check08b Coverage Results" MODIFIED="1623289520119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week8" />
