@@ -1,0 +1,964 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_6_16_21,_1_37_PM_[Default_Changelist]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_6_16_21,_1_37_PM_[Default_Changelist]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_6_16_21,_1_37_PM_[Default_Changelist]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_6_16_21,_1_37_PM_[Default_Changelist]/shelved.patch	(revision 49a48de7779b95339f970effa8a969285a885026)
++++ /dev/null	(revision 49a48de7779b95339f970effa8a969285a885026)
+@@ -1,860 +0,0 @@
+-Index: .idea/.gitignore
+-===================================================================
+-diff --git a/.idea/.gitignore b/.idea/.gitignore
+-deleted file mode 100644
+---- a/.idea/.gitignore	(revision 517f1052e9737ec214f9b8ea13f348018e76ab54)
+-+++ /dev/null	(revision 517f1052e9737ec214f9b8ea13f348018e76ab54)
+-@@ -1,9 +0,0 @@
+--# Default ignored files
+--/shelf/
+--/workspace.xml
+--# Datasource local storage ignored files
+--/dataSources/
+--/dataSources.local.xml
+--# Editor-based HTTP Client requests
+--/httpRequests/
+--/.idea
+-Index: week8/asteroids/Asteroids.py
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/week8/asteroids/Asteroids.py b/week8/asteroids/Asteroids.py
+-new file mode 100644
+---- /dev/null	(date 1623734479890)
+-+++ b/week8/asteroids/Asteroids.py	(date 1623734479890)
+-@@ -0,0 +1,284 @@
+-+"""
+-+File: asteroids.py
+-+Original Author: Br. Burton
+-+Designed to be completed by others
+-+
+-+This program implements the asteroids game.
+-+"""
+-+import math
+-+import random
+-+import arcade
+-+
+-+# These are Global constants to use throughout the game
+-+SCREEN_WIDTH = 800
+-+SCREEN_HEIGHT = 600
+-+
+-+BULLET_RADIUS = 30
+-+BULLET_SPEED = 10
+-+BULLET_LIFE = 60
+-+
+-+SHIP_TURN_AMOUNT = 3
+-+SHIP_THRUST_AMOUNT = 0.25
+-+SHIP_RADIUS = 30
+-+
+-+INITIAL_ROCK_COUNT = 5
+-+
+-+BIG_ROCK_SPIN = 1
+-+BIG_ROCK_SPEED = 1.5
+-+BIG_ROCK_RADIUS = 15
+-+
+-+MEDIUM_ROCK_SPIN = -2
+-+MEDIUM_ROCK_RADIUS = 5
+-+
+-+SMALL_ROCK_SPIN = 5
+-+SMALL_ROCK_RADIUS = 2
+-+
+-+
+-+class Point:
+-+    def __init__(self):
+-+        self.x = 0.0
+-+        self.y = 0.0
+-+
+-+
+-+class Velocity:
+-+    def __init__(self):
+-+        self.dx = 0
+-+        self.dy = 0
+-+
+-+
+-+class FlyingObject:
+-+    def __init__(self):
+-+        # object location is Point()
+-+        self.center = Point()
+-+        self.velocity = Velocity()
+-+        self.radius = 0
+-+
+-+    def draw(self):
+-+        pass
+-+
+-+    def advance(self):
+-+        # changes the position of the object
+-+        self.center.y += self.velocity.dy
+-+        self.center.x += self.velocity.dx
+-+
+-+
+-+class Bullet(FlyingObject):
+-+    def __init__(self):
+-+        super().__init__()
+-+        self.radius = BULLET_RADIUS
+-+        self.angle = 45
+-+        self.time = 0
+-+
+-+    def fire(self, angle):
+-+        pass
+-+
+-+
+-+class Asteroid(FlyingObject):
+-+    """
+-+    Asteroid Base Class
+-+    """
+-+    def __init__(self):
+-+        super().__init__()
+-+        self.center.x = random.uniform(SCREEN_WIDTH, SCREEN_WIDTH)
+-+        self.center.y = random.uniform(SCREEN_HEIGHT / 2, SCREEN_HEIGHT)
+-+        self.velocity.dx = random.uniform(-1, -3)
+-+        self.velocity.dy = random.uniform(-1, -3)
+-+
+-+    def draw(self):
+-+        pass
+-+
+-+
+-+class BigRock(Asteroid):
+-+    """
+-+    Big Asteroid
+-+    """
+-+    def __init__(self):
+-+        super().__init__()
+-+
+-+    def draw(self):
+-+        img = "images/meteorGrey_big1.png"
+-+        texture = arcade.load_texture(img)
+-+
+-+        width = texture.width
+-+        height = texture.height
+-+        # width = 340
+-+        # height = 349
+-+        alpha = 1  # For transparency, 1 means not transparent
+-+
+-+        x = self.center.x
+-+        y = self.center.y
+-+        angle = self.angle
+-+
+-+        # arcade.draw_rectangle_filled(x, y, width, height, color=arcade.color.NAVY_BLUE)
+-+        arcade.draw_texture_rectangle(x, y, width, height, texture, angle, alpha)
+-+
+-+
+-+class MediumRock(Asteroid):
+-+    """
+-+       Medium Asteroid
+-+       """
+-+    def __init__(self):
+-+        super().__init__()
+-+        self.center.x = random.uniform(SCREEN_WIDTH, SCREEN_WIDTH)
+-+        self.center.y = random.uniform((SCREEN_HEIGHT / 2), SCREEN_WIDTH)
+-+
+-+    def draw(self):
+-+        img = 'images/meteorGrey_med1.png'
+-+        texture = arcade.load_texture(img)
+-+
+-+        width = texture.width
+-+        height = texture.height
+-+        # width = 340
+-+        # height = 349
+-+        alpha = 1  # For transparency, 1 means not transparent
+-+
+-+        x = self.center.x
+-+        y = self.center.y
+-+        angle = self.angle
+-+
+-+        arcade.draw_texture_rectangle(x, y, width, height, texture, angle, alpha)
+-+
+-+
+-+class SmallRock(Asteroid):
+-+    """
+-+    Small Asteroid
+-+    """
+-+    def __init__(self):
+-+        super().__init__()
+-+        self.center.x = random.uniform(SCREEN_WIDTH, SCREEN_WIDTH)
+-+        self.center.y = random.uniform((SCREEN_HEIGHT / 2), SCREEN_WIDTH)
+-+
+-+    def draw(self):
+-+        img = "images/meteorGrey_small1.png"
+-+        texture = arcade.load_texture(img)
+-+
+-+        width = texture.width
+-+        height = texture.height
+-+        alpha = 1  # For transparency, 1 means not transparent
+-+
+-+        x = self.center.x
+-+        y = self.center.y
+-+        angle = self.angle
+-+
+-+        arcade.draw_texture_rectangle(x, y, width, height, texture, angle, alpha)
+-+
+-+
+-+class Ship(FlyingObject):
+-+    """
+-+    Ship
+-+    """
+-+    def __init__(self):
+-+        super().__init__()
+-+        pass
+-+
+-+
+-+class Game(arcade.Window):
+-+    """
+-+    This class handles all the game callbacks and interaction
+-+
+-+    This class will then call the appropriate functions of
+-+    each of the above classes.
+-+
+-+    You are welcome to modify anything in this class.
+-+    """
+-+
+-+    def __init__(self, width, height):
+-+        """
+-+        Sets up the initial conditions of the game
+-+        :param width: Screen width
+-+        :param height: Screen height
+-+        """
+-+        super().__init__(width, height)
+-+        arcade.set_background_color(arcade.color.SMOKY_BLACK)
+-+
+-+        self.held_keys = set()
+-+        self.asteroids = []
+-+
+-+        # TODO: declare anything here you need the game class to track
+-+        self.asteroid = BigRock()
+-+
+-+    def on_draw(self):
+-+        """
+-+        Called automatically by the arcade framework.
+-+        Handles the responsibility of drawing all elements.
+-+        """
+-+
+-+        # clear the screen to begin drawing
+-+        arcade.start_render()
+-+
+-+        # TODO: draw each object
+-+        # self.create_target()
+-+        self.asteroid.draw()
+-+        # for asteroid in self.asteroid:
+-+
+-+
+-+    def update(self, delta_time):
+-+        """
+-+        Update each object in the game.
+-+        :param delta_time: tells us how much time has actually elapsed
+-+        """
+-+        self.check_keys()
+-+
+-+        # TODO: Tell everything to advance or move forward one step in time
+-+        # decide if we should start a target
+-+
+-+        self.asteroid.advance()
+-+        # TODO: Check for collisions
+-+
+-+    # def create_asteroids(self):
+-+    #     asteroids = [
+-+    #         BigRock()
+-+    #     ]
+-+    #     # asteroid_index = random.randint(0, len(asteroids) - 1)
+-+    #     asteroid_index = random.randint(0, 4)
+-+    #
+-+    #     self.asteroids.append(
+-+    #         asteroids[asteroid_index]
+-+    #     )
+-+    #     pass
+-+
+-+
+-+    def check_keys(self):
+-+        """
+-+        This function checks for keys that are being held down.
+-+        You will need to put your own method calls in here.
+-+        """
+-+        if arcade.key.LEFT in self.held_keys:
+-+            pass
+-+
+-+        if arcade.key.RIGHT in self.held_keys:
+-+            pass
+-+
+-+        if arcade.key.UP in self.held_keys:
+-+            pass
+-+
+-+        if arcade.key.DOWN in self.held_keys:
+-+            pass
+-+
+-+        # Machine gun mode...
+-+        # if arcade.key.SPACE in self.held_keys:
+-+        #    pass
+-+
+-+    def on_key_press(self, key: int, modifiers: int):
+-+        """
+-+        Puts the current key in the set of keys that are being held.
+-+        You will need to add things here to handle firing the bullet.
+-+        """
+-+        if self.ship.alive:
+-+            self.held_keys.add(key)
+-+
+-+            if key == arcade.key.SPACE:
+-+                # TODO: Fire the bullet here!
+-+                pass
+-+
+-+    def on_key_release(self, key: int, modifiers: int):
+-+        """
+-+        Removes the current key from the set of held keys.
+-+        """
+-+        if key in self.held_keys:
+-+            self.held_keys.remove(key)
+-+
+-+
+-+# Creates the game and starts it going
+-+window = Game(SCREEN_WIDTH, SCREEN_HEIGHT)
+-+arcade.run()
+-Index: week8/asteroids/test.py
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/week8/asteroids/test.py b/week8/asteroids/test.py
+-new file mode 100644
+---- /dev/null	(date 1623734302921)
+-+++ b/week8/asteroids/test.py	(date 1623734302921)
+-@@ -0,0 +1,19 @@
+-+# Python3 code to demonstrate
+-+# converting list of strings to int
+-+# using naive method
+-+
+-+# initializing list
+-+test_list = ['1', '4', '3', '6', '7']
+-+
+-+# Printing original list
+-+print("Original list is : " + str(test_list))
+-+
+-+# using naive method to
+-+# perform conversion
+-+for i in range(0, len(test_list)):
+-+    test_list[i] = int(test_list[i])
+-+
+-+# Printing modified list
+-+print("Modified list is : " + str(test_list))
+-+for i in test_list:
+-+    print(test_list[i])
+-\ No newline at end of file
+-Index: week8/check08a.py
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/week8/check08a.py b/week8/check08a.py
+-new file mode 100644
+---- /dev/null	(date 1623213794546)
+-+++ b/week8/check08a.py	(date 1623213794546)
+-@@ -0,0 +1,62 @@
+-+class GPA:
+-+
+-+    def __init__(self):
+-+        self.gpa = 0.0
+-+
+-+    def get_gpa(self):
+-+        return self.gpa
+-+
+-+    def set_gpa(self, val):
+-+        if val < 0:
+-+            self.__gpa = 0
+-+        elif val > 4.0:
+-+            self.__gpa = 4.0
+-+        else:
+-+            self.__gpa = val
+-+
+-+    def get_letter(self):
+-+        if 0 < self.gpa <= 0.99:
+-+            self.letter == 'F'
+-+        elif 1.00 < self.gpa <= 1.99:
+-+            self.letter == 'D'
+-+        elif 2.00 < self.gpa <= 2.99:
+-+            self.letter == 'C'
+-+        elif 3.00 < self.gpa <= 3.99:
+-+            self.letter == 'B'
+-+        elif self.gpa == 4.00:
+-+            self.letter == 'A'
+-+
+-+    def set_letter(self, val):
+-+        if val == 'E':
+-+            self.__gpa = 0
+-+        elif val > 4.0:
+-+            self.__gpa = 4.0
+-+        else:
+-+            self.__gpa = val
+-+
+-+def main():
+-+    student = GPA()
+-+
+-+    print("Initial values:")
+-+    print("GPA: {:.2f}".format(student.get_gpa()))
+-+    print("Letter: {}".format(student.get_letter()))
+-+
+-+    value = float(input("Enter a new GPA: "))
+-+
+-+    student.set_gpa(value)
+-+
+-+    print("After setting value:")
+-+    print("GPA: {:.2f}".format(student.get_gpa()))
+-+    print("Letter: {}".format(student.get_letter()))
+-+
+-+    letter = input("Enter a new letter: ")
+-+
+-+    student.set_letter(letter)
+-+
+-+    print("After setting letter:")
+-+    print("GPA: {:.2f}".format(student.get_gpa()))
+-+    print("Letter: {}".format(student.get_letter()))
+-+
+-+
+-+if __name__ == "__main__":
+-+    main()
+-\ No newline at end of file
+-Index: week8/getterssetters.py
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/week8/getterssetters.py b/week8/getterssetters.py
+-new file mode 100644
+---- /dev/null	(date 1623204434632)
+-+++ b/week8/getterssetters.py	(date 1623204434632)
+-@@ -0,0 +1,21 @@
+-+class P:
+-+    def __init__(self, x):
+-+        self.x = x
+-+
+-+    @property
+-+    def x(self):
+-+        return self.__x
+-+
+-+    @x.setter
+-+    def x(self, x):
+-+        if x < 0:
+-+            self.__x = 0
+-+        elif x > 100:
+-+            self.__x = 1000
+-+        else:
+-+            self.__x = x
+-+
+-+            
+-+p1 = P(1001)
+-+print(p1.x)
+-+
+-Index: .idea/cs241.iml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module type=\"PYTHON_MODULE\" version=\"4\">\n  <component name=\"NewModuleRootManager\">\n    <content url=\"file://$MODULE_DIR$\" />\n    <orderEntry type=\"jdk\" jdkName=\"Python 3.8 (pythonProject)\" jdkType=\"Python SDK\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n  </component>\n</module>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/cs241.iml b/.idea/cs241.iml
+---- a/.idea/cs241.iml	(revision 517f1052e9737ec214f9b8ea13f348018e76ab54)
+-+++ b/.idea/cs241.iml	(date 1622500487627)
+-@@ -1,8 +1,14 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <module type="PYTHON_MODULE" version="4">
+-   <component name="NewModuleRootManager">
+--    <content url="file://$MODULE_DIR$" />
+--    <orderEntry type="jdk" jdkName="Python 3.8 (pythonProject)" jdkType="Python SDK" />
+-+    <content url="file://$MODULE_DIR$">
+-+      <excludeFolder url="file://$MODULE_DIR$/arkd" />
+-+    </content>
+-+    <orderEntry type="inheritedJdk" />
+-     <orderEntry type="sourceFolder" forTests="false" />
+-   </component>
+-+  <component name="PyDocumentationSettings">
+-+    <option name="format" value="PLAIN" />
+-+    <option name="myDocStringFormat" value="Plain" />
+-+  </component>
+- </module>
+-\ No newline at end of file
+-Index: week6/skeet.py
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/week6/skeet.py b/week6/skeet.py
+-new file mode 100644
+---- /dev/null	(date 1623730146425)
+-+++ b/week6/skeet.py	(date 1623730146425)
+-@@ -0,0 +1,378 @@
+-+"""
+-+File: skeet.py
+-+Original Author: Br. Burton
+-+Designed to be completed by others
+-+
+-+This program implements an awesome version of skeet.
+-+"""
+-+import arcade
+-+import math
+-+import random
+-+
+-+# These are Global constants to use throughout the game
+-+SCREEN_WIDTH = 600
+-+SCREEN_HEIGHT = 500
+-+
+-+RIFLE_WIDTH = 100
+-+RIFLE_HEIGHT = 20
+-+RIFLE_COLOR = arcade.color.DARK_RED
+-+
+-+BULLET_RADIUS = 3
+-+BULLET_COLOR = arcade.color.ANTIQUE_RUBY
+-+BULLET_SPEED = 10
+-+
+-+TARGET_RADIUS = 20
+-+TARGET_COLOR = arcade.color.CARROT_ORANGE
+-+TARGET_SAFE_COLOR = arcade.color.AIR_FORCE_BLUE
+-+TARGET_SAFE_RADIUS = 15
+-+
+-+
+-+class Point:
+-+    def __init__(self):
+-+        self.x = 0.0
+-+        self.y = 0.0
+-+
+-+
+-+class Velocity:
+-+    def __init__(self):
+-+        self.dx = 0
+-+        self.dy = 0
+-+
+-+
+-+class FlyingObject:
+-+    def __init__(self):
+-+        # object location is Point()
+-+        self.center = Point()
+-+        self.velocity = Velocity()
+-+        self.radius = 0
+-+        self.color = None
+-+        self.alive = True
+-+
+-+    def draw(self):
+-+        # arcade.draw_cirdcle_outline(self.center.x, self.center.y, self.radius, self.color)
+-+        arcade.draw_rectangle_filled(self.center.x, self.center.y, 20, 20, self.color)
+-+
+-+    def advance(self):
+-+        # changes the position of the object
+-+        self.center.y += self.velocity.dy
+-+        self.center.x += self.velocity.dx
+-+
+-+    def is_off_screen(self, width, height):
+-+        if self.center.x > width or self.center.x < 0 or self.center.y > height or self.center.y < 0:
+-+            return True
+-+        else:
+-+            return False
+-+
+-+    def hide(self):
+-+        self.alive = False
+-+
+-+    def show(self):
+-+        self.alive = True
+-+
+-+
+-+class Bullet(FlyingObject):
+-+    def __init__(self):
+-+        super().__init__()
+-+        self.radius = BULLET_RADIUS
+-+        self.color = BULLET_COLOR
+-+        self.angle = 45
+-+        self.time = 0
+-+
+-+    def fire(self, angle):
+-+        self.velocity.dx = math.cos(math.radians(angle)) * BULLET_SPEED
+-+        self.velocity.dy = math.sin(math.radians(angle)) * BULLET_SPEED
+-+        # bullet at the tip of canon
+-+        self.center.y = RIFLE_WIDTH * math.sin(math.radians(angle))
+-+        self.center.x = RIFLE_WIDTH * math.cos(math.radians(angle))
+-+
+-+
+-+class Target(FlyingObject):
+-+    score: int = 0
+-+
+-+    def __init__(self):
+-+        super().__init__()
+-+
+-+        self.center.x = random.uniform(SCREEN_WIDTH, SCREEN_WIDTH)
+-+        self.center.y = random.uniform(SCREEN_HEIGHT/2, SCREEN_HEIGHT)
+-+        self.velocity.dx = random.uniform(-1, -3)
+-+        self.velocity.dy = random.uniform(-1, -3)
+-+        self.color = TARGET_COLOR
+-+        self.radius = TARGET_RADIUS
+-+        self.score = 0
+-+
+-+    def draw(self):
+-+        # arcade.draw_rectangle_filled(self.center.x - 100, self.center.y, 25, 16, arcade.color.ALABAMA_CRIMSON)
+-+        arcade.draw_arc_outline(self.center.x - 20, self.center.y, 25, 16, arcade.color.TANGO_PINK, 60, 130)
+-+        # arcade.draw_arc_outline(self.center.x + 40, self.center.y, 25, 16, arcade.color.CADMIUM_ORANGE, 90, 180)
+-+        arcade.draw_circle_filled(self.center.x, self.center.y, 12, arcade.color.AQUA)
+-+
+-+    def hit(self):
+-+        self.set_score(1)
+-+        self.alive = False
+-+        return self.score
+-+
+-+    def set_score(self, score):
+-+        self.score = score
+-+
+-+
+-+class SafeTarget(Target):
+-+    def __init__(self):
+-+        super().__init__()
+-+        self.center.x = random.uniform(SCREEN_WIDTH, SCREEN_WIDTH)
+-+        self.center.y = random.uniform((SCREEN_HEIGHT/2), SCREEN_WIDTH)
+-+        self.color = TARGET_SAFE_COLOR
+-+        self.radius = TARGET_SAFE_RADIUS
+-+
+-+    def draw(self):
+-+        arcade.draw_rectangle_filled(self.center.x - 100, self.center.y, 25, 16, arcade.color.BLACK_OLIVE)
+-+
+-+    def hit(self):
+-+        self.score = -10
+-+        self.hide()
+-+        return self.score
+-+
+-+
+-+class StrongTarget(Target):
+-+    def __init__(self):
+-+        super().__init__()
+-+        self.center.x = random.uniform(SCREEN_WIDTH, SCREEN_WIDTH)
+-+        self.center.y = random.uniform((SCREEN_HEIGHT/2), SCREEN_WIDTH)
+-+        self.velocity.dx = random.uniform(-1, -2)
+-+        self.velocity.dy = random.uniform(-1, -2)
+-+        self.color = TARGET_SAFE_COLOR
+-+        self.radius = TARGET_SAFE_RADIUS * 2
+-+        self.hit_count = 0
+-+        self.hit_intent = 3
+-+        self.text = 3
+-+
+-+    def draw(self):
+-+        arcade.draw_circle_outline(self.center.x - 20, self.center.y, self.radius, arcade.color.DARK_VIOLET)
+-+        text_x = self.center.x - (self.radius / 2)
+-+        text_y = self.center.y - (self.radius / 2)
+-+        arcade.draw_text(repr(self.text), text_x, text_y, arcade.color.DARK_VIOLET)
+-+
+-+    def hit(self):
+-+        # the strong target should move slowly
+-+        if self.hit_count < self.hit_intent:
+-+            self.hit_count += 1
+-+            self.text -= 1
+-+            self.show()
+-+            if self.hit_count != self.hit_intent:
+-+                self.set_score(1)
+-+            else:
+-+                self.set_score(5)
+-+                self.hide()
+-+        return self.score
+-+
+-+
+-+class Rifle:
+-+    """
+-+    The rifle is a rectangle that tracks the mouse.
+-+    """
+-+
+-+    def __init__(self):
+-+        self.center = Point()
+-+        self.center.x = 0
+-+        self.center.y = 0
+-+        self.angle = 45
+-+
+-+    def draw(self):
+-+        arcade.draw_rectangle_filled(self.center.x, self.center.y, RIFLE_WIDTH, RIFLE_HEIGHT, RIFLE_COLOR,
+-+                                     360 - self.angle)
+-+
+-+
+-+class Game(arcade.Window):
+-+    """
+-+    This class handles all the game callbacks and interaction
+-+    It assumes the following classes exist:
+-+        Rifle
+-+        Target (and it's sub-classes)
+-+        Point
+-+        Velocity
+-+        Bullet
+-+
+-+    This class will then call the appropriate functions of
+-+    each of the above classes.
+-+
+-+    You are welcome to modify anything in this class, but mostly
+-+    you shouldn't have to. There are a few sections that you
+-+    must add code to.
+-+    """
+-+
+-+    def __init__(self, width, height):
+-+        """
+-+        Sets up the initial conditions of the game
+-+        :param width: Screen width
+-+        :param height: Screen height
+-+        """
+-+        super().__init__(width, height)
+-+
+-+        self.rifle = Rifle()
+-+        self.score = 0
+-+
+-+        self.bullets = []
+-+        self.targets = []
+-+
+-+        arcade.set_background_color(arcade.color.WHITE)
+-+
+-+    def on_draw(self):
+-+        """
+-+        Called automatically by the arcade framework.
+-+        Handles the responsibility of drawing all elements.
+-+        """
+-+
+-+        # clear the screen to begin drawing
+-+        arcade.start_render()
+-+
+-+        # draw each object
+-+        self.rifle.draw()
+-+
+-+        # bullets and target lists calling both draw methods
+-+        elements = [self.bullets, self.targets]
+-+        for element in elements:
+-+            [item.draw() for item in element]
+-+
+-+        # for bullet in self.bullets:
+-+        #     bullet.draw()
+-+        #
+-+        # for target in self.targets:
+-+        #     target.draw()
+-+
+-+        self.draw_score()
+-+
+-+    def draw_score(self):
+-+        """
+-+        Puts the current score on the screen
+-+        """
+-+        score_text = "Score: {}".format(self.score)
+-+        start_x = 10
+-+        start_y = SCREEN_HEIGHT - 20
+-+        arcade.draw_text(score_text, start_x=start_x, start_y=start_y, font_size=12, color=arcade.color.NAVY_BLUE)
+-+
+-+    def update(self, delta_time):
+-+        """
+-+        Update each object in the game.
+-+        :param delta_time: tells us how much time has actually elapsed
+-+        """
+-+        self.check_collisions()
+-+        self.check_off_screen()
+-+
+-+        # decide if we should start a target
+-+        if random.randint(1, 50) == 1:
+-+            self.create_target()
+-+
+-+        for bullet in self.bullets:
+-+            bullet.advance()
+-+
+-+        # TODO: Iterate through your targets and tell them to advance
+-+        for target in self.targets:
+-+            target.advance()
+-+
+-+    def create_target(self):
+-+        """
+-+        Creates a new target of a random type and adds it to the list.
+-+        :return:
+-+        """
+-+
+-+        targets = [
+-+            Target(),
+-+            SafeTarget(),
+-+            StrongTarget()
+-+        ]
+-+        target_index = random.randint(0, len(targets) - 1)
+-+
+-+        self.targets.append(
+-+            targets[target_index]
+-+        )
+-+
+-+        # TODO: Decide what type of target to create and append it to the list
+-+
+-+    def check_collisions(self):
+-+        """
+-+        Checks to see if bullets have hit targets.
+-+        Updates scores and removes dead items.
+-+        :return:
+-+        """
+-+
+-+        # NOTE: This assumes you named your targets list "targets"
+-+
+-+        for bullet in self.bullets:
+-+            for target in self.targets:
+-+
+-+                # Make sure they are both alive before checking for a collision
+-+                if bullet.alive and target.alive:
+-+                    too_close = bullet.radius + target.radius
+-+
+-+                    if (abs(bullet.center.x - target.center.x) < too_close and
+-+                            abs(bullet.center.y - target.center.y) < too_close):
+-+                        # its a hit!
+-+                        bullet.hide()
+-+                        target.hide()
+-+                        self.score += target.hit()
+-+
+-+                        # We will wait to remove the dead objects until after we
+-+                        # finish going through the list
+-+
+-+        # Now, check for anything that is dead, and remove it
+-+        self.cleanup_zombies()
+-+
+-+    def cleanup_zombies(self):
+-+        """
+-+        Removes any dead bullets or targets from the list.
+-+        :return:
+-+        """
+-+        for bullet in self.bullets:
+-+            if not bullet.alive:
+-+                self.bullets.remove(bullet)
+-+
+-+        for target in self.targets:
+-+            if not target.alive:
+-+                self.targets.remove(target)
+-+
+-+    def check_off_screen(self):
+-+        """
+-+        Checks to see if bullets or targets have left the screen
+-+        and if so, removes them from their lists.
+-+        :return:
+-+        """
+-+        for bullet in self.bullets:
+-+            if bullet.is_off_screen(SCREEN_WIDTH, SCREEN_HEIGHT):
+-+                self.bullets.remove(bullet)
+-+
+-+        for target in self.targets:
+-+            if target.is_off_screen(SCREEN_WIDTH, SCREEN_HEIGHT):
+-+                self.targets.remove(target)
+-+
+-+    def on_mouse_motion(self, x: float, y: float, dx: float, dy: float):
+-+        # set the rifle angle in degrees
+-+        self.rifle.angle = self._get_angle_degrees(x, y)
+-+
+-+    def on_mouse_press(self, x: float, y: float, button: int, modifiers: int):
+-+        # Fire!
+-+        angle = self._get_angle_degrees(x, y)
+-+
+-+        bullet = Bullet()
+-+        bullet.fire(angle)
+-+
+-+        self.bullets.append(bullet)
+-+
+-+    def _get_angle_degrees(self, x, y):
+-+        """
+-+        Gets the value of an angle (in degrees) defined
+-+        by the provided x and y.
+-+
+-+        Note: This could be a static method, but we haven't
+-+        discussed them yet...
+-+        """
+-+        # get the angle in radians
+-+        angle_radians = math.atan2(y, x)
+-+
+-+        # convert to degrees
+-+        angle_degrees = math.degrees(angle_radians)
+-+
+-+        return angle_degrees
+-+
+-+
+-+# Creates the game and starts it going
+-+window = Game(width=SCREEN_WIDTH, height=SCREEN_HEIGHT)
+-+arcade.run()
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"3e0bf680-33ab-4a1b-988d-25b940ab8f73\" name=\"Default Changelist\" comment=\"\">\n      <change afterPath=\"$PROJECT_DIR$/week6/skeet.py\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/week8/asteroids/Asteroids.py\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/week8/asteroids/test.py\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/week8/check08a.py\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/week8/getterssetters.py\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/.gitignore\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/cs241.iml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/cs241.iml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Python Script\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitSEFilterConfiguration\">\n    <file-type-list>\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\n      <filtered-out-file-type name=\"TAG\" />\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\n    </file-type-list>\n  </component>\n  <component name=\"ProjectId\" id=\"1tJwCfjHNMrxni2V1fRs4qhrIud\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.pluginManager\" />\n  </component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/week8/asteroids\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"Python.Asteroids\">\n    <configuration name=\"Asteroids\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"cs241\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/week8\" />\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/week8/asteroids/Asteroids.py\" />\n      <option name=\"PARAMETERS\" value=\"\" />\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\n      <option name=\"MODULE_MODE\" value=\"false\" />\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\n      <option name=\"INPUT_FILE\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"check08a\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"cs241\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/week8\" />\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/week8/check08a.py\" />\n      <option name=\"PARAMETERS\" value=\"\" />\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\n      <option name=\"MODULE_MODE\" value=\"false\" />\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\n      <option name=\"INPUT_FILE\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"getterssetters\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"cs241\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/week8\" />\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/week8/getterssetters.py\" />\n      <option name=\"PARAMETERS\" value=\"\" />\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\n      <option name=\"MODULE_MODE\" value=\"false\" />\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\n      <option name=\"INPUT_FILE\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"skeet\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"cs241\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/week6\" />\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/week6/skeet.py\" />\n      <option name=\"PARAMETERS\" value=\"\" />\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\n      <option name=\"MODULE_MODE\" value=\"false\" />\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\n      <option name=\"INPUT_FILE\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"test\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"cs241\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/week8/asteroids\" />\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/week8/asteroids/test.py\" />\n      <option name=\"PARAMETERS\" value=\"\" />\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\n      <option name=\"MODULE_MODE\" value=\"false\" />\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\n      <option name=\"INPUT_FILE\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Python.Asteroids\" />\n        <item itemvalue=\"Python.test\" />\n        <item itemvalue=\"Python.skeet\" />\n        <item itemvalue=\"Python.check08a\" />\n        <item itemvalue=\"Python.getterssetters\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"3e0bf680-33ab-4a1b-988d-25b940ab8f73\" name=\"Default Changelist\" comment=\"\" />\n      <created>1622500374477</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1622500374477</updated>\n      <workItem from=\"1622500376922\" duration=\"1554000\" />\n      <workItem from=\"1622507500745\" duration=\"16000\" />\n      <workItem from=\"1622507542564\" duration=\"7438000\" />\n      <workItem from=\"1623102101059\" duration=\"537000\" />\n      <workItem from=\"1623109179085\" duration=\"9892000\" />\n      <workItem from=\"1623161117088\" duration=\"506000\" />\n      <workItem from=\"1623202618881\" duration=\"4165000\" />\n      <workItem from=\"1623286805402\" duration=\"632000\" />\n      <workItem from=\"1623722614221\" duration=\"10187000\" />\n      <workItem from=\"1623778888473\" duration=\"344000\" />\n      <workItem from=\"1623806384044\" duration=\"334000\" />\n      <workItem from=\"1623814935384\" duration=\"206000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\n  </component>\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\n    <SUITE FILE_PATH=\"coverage/cs241$Asteroids.coverage\" NAME=\"Asteroids Coverage Results\" MODIFIED=\"1623734356506\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/week8\" />\n    <SUITE FILE_PATH=\"coverage/cs241$getterssetters.coverage\" NAME=\"getterssetters Coverage Results\" MODIFIED=\"1623208864509\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/week8\" />\n    <SUITE FILE_PATH=\"coverage/cs241$check08a.coverage\" NAME=\"check08a Coverage Results\" MODIFIED=\"1623213794556\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/week8\" />\n    <SUITE FILE_PATH=\"coverage/cs241$test.coverage\" NAME=\"test Coverage Results\" MODIFIED=\"1623734302935\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/week8/asteroids\" />\n    <SUITE FILE_PATH=\"coverage/cs241$skeet.coverage\" NAME=\"skeet Coverage Results\" MODIFIED=\"1623722995008\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/week6\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 49a48de7779b95339f970effa8a969285a885026)
++++ b/.idea/workspace.xml	(date 1624672041943)
+@@ -2,13 +2,10 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="3e0bf680-33ab-4a1b-988d-25b940ab8f73" name="Default Changelist" comment="">
+-      <change afterPath="$PROJECT_DIR$/week6/skeet.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/week8/asteroids/Asteroids.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/week8/asteroids/test.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/week8/check08a.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/week8/getterssetters.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/cs241.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cs241.iml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/week9/check09b.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_16_21,_1_37_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/week8/asteroids/Asteroids.py" beforeDir="false" afterPath="$PROJECT_DIR$/week8/asteroids/Asteroids.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -94,7 +91,7 @@
+       <option name="INPUT_FILE" value="" />
+       <method v="2" />
+     </configuration>
+-    <configuration name="getterssetters" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
++    <configuration name="check09b" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+       <module name="cs241" />
+       <option name="INTERPRETER_OPTIONS" value="" />
+       <option name="PARENT_ENVS" value="true" />
+@@ -102,12 +99,12 @@
+         <env name="PYTHONUNBUFFERED" value="1" />
+       </envs>
+       <option name="SDK_HOME" value="" />
+-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/week8" />
++      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/week9" />
+       <option name="IS_MODULE_SDK" value="true" />
+       <option name="ADD_CONTENT_ROOTS" value="true" />
+       <option name="ADD_SOURCE_ROOTS" value="true" />
+       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/week8/getterssetters.py" />
++      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/week9/check09b.py" />
+       <option name="PARAMETERS" value="" />
+       <option name="SHOW_COMMAND_LINE" value="false" />
+       <option name="EMULATE_TERMINAL" value="false" />
+@@ -163,10 +160,10 @@
+     <recent_temporary>
+       <list>
+         <item itemvalue="Python.Asteroids" />
++        <item itemvalue="Python.check09b" />
+         <item itemvalue="Python.test" />
+         <item itemvalue="Python.skeet" />
+         <item itemvalue="Python.check08a" />
+-        <item itemvalue="Python.getterssetters" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -190,6 +187,18 @@
+       <workItem from="1623778888473" duration="344000" />
+       <workItem from="1623806384044" duration="334000" />
+       <workItem from="1623814935384" duration="206000" />
++      <workItem from="1623864814458" duration="3174000" />
++      <workItem from="1623895520898" duration="2939000" />
++      <workItem from="1623951668182" duration="148000" />
++      <workItem from="1624301069860" duration="402000" />
++      <workItem from="1624323618124" duration="6685000" />
++      <workItem from="1624461905234" duration="344000" />
++      <workItem from="1624497140905" duration="495000" />
++      <workItem from="1624506671901" duration="122000" />
++      <workItem from="1624542078082" duration="105000" />
++      <workItem from="1624584442736" duration="152000" />
++      <workItem from="1624591152064" duration="107000" />
++      <workItem from="1624620811503" duration="118000" />
+     </task>
+     <servers />
+   </component>
+@@ -209,10 +218,11 @@
+     <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+-    <SUITE FILE_PATH="coverage/cs241$Asteroids.coverage" NAME="Asteroids Coverage Results" MODIFIED="1623734356506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week8" />
++    <SUITE FILE_PATH="coverage/cs241$Asteroids.coverage" NAME="Asteroids Coverage Results" MODIFIED="1624336803214" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week8" />
+     <SUITE FILE_PATH="coverage/cs241$getterssetters.coverage" NAME="getterssetters Coverage Results" MODIFIED="1623208864509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week8" />
+     <SUITE FILE_PATH="coverage/cs241$check08a.coverage" NAME="check08a Coverage Results" MODIFIED="1623213794556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week8" />
+     <SUITE FILE_PATH="coverage/cs241$test.coverage" NAME="test Coverage Results" MODIFIED="1623734302935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week8/asteroids" />
++    <SUITE FILE_PATH="coverage/cs241$check09b.coverage" NAME="check09b Coverage Results" MODIFIED="1624309005320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week9" />
+     <SUITE FILE_PATH="coverage/cs241$skeet.coverage" NAME="skeet Coverage Results" MODIFIED="1623722995008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week6" />
+   </component>
+ </project>
+\ No newline at end of file
