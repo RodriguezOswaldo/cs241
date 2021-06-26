@@ -27,3 +27,16 @@ print(fish)
 # to copy a list and re-use
 fish_2 = fish.copy()
 print(fish_2)
+
+# reverse the order of the list
+fish.reverse()
+print(fish)
+
+# get the number of elements in a list with the same value
+print(fish.count('goby'))
+
+# sort lists
+fish.sort()
+print(fish)
+
+#
