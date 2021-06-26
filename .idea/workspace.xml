@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e0bf680-33ab-4a1b-988d-25b940ab8f73" name="Default Changelist" comment="Dictionaries">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/week10/lists.py" beforeDir="false" afterPath="$PROJECT_DIR$/week10/lists.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -191,6 +190,7 @@
       <workItem from="1623778888473" duration="344000" />
       <workItem from="1623806384044" duration="334000" />
       <workItem from="1623814935384" duration="206000" />
+      <workItem from="1624675464581" duration="207000" />
     </task>
     <task id="LOCAL-00001" summary="new files">
       <created>1623957812995</created>
@@ -271,7 +271,7 @@
     <SUITE FILE_PATH="coverage/cs241$hash_tables.coverage" NAME="hash_tables Coverage Results" MODIFIED="1624066836932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week9" />
     <SUITE FILE_PATH="coverage/cs241$getterssetters.coverage" NAME="getterssetters Coverage Results" MODIFIED="1623208864509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week8" />
     <SUITE FILE_PATH="coverage/cs241$practice.coverage" NAME="practice Coverage Results" MODIFIED="1620785120718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week4" />
-    <SUITE FILE_PATH="coverage/cs241$lists.coverage" NAME="lists Coverage Results" MODIFIED="1624675228699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week10" />
+    <SUITE FILE_PATH="coverage/cs241$lists.coverage" NAME="lists Coverage Results" MODIFIED="1624675492093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week10" />
     <SUITE FILE_PATH="coverage/cs241$practice_classes.coverage" NAME="practice_classes Coverage Results" MODIFIED="1620789514902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week3" />
     <SUITE FILE_PATH="coverage/cs241$data_structures.coverage" NAME="data-structures Coverage Results" MODIFIED="1621112779628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week4" />
     <SUITE FILE_PATH="coverage/cs241$check08b.coverage" NAME="check08b Coverage Results" MODIFIED="1623289520119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week8" />
