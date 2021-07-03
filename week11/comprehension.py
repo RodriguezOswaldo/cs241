@@ -17,3 +17,13 @@ print(M)
 d = [x**3 for x in range(10)]
 print(d)
 
+# this is the same than
+new_list = []
+for n in range(10):
+    if n % 2 == 0:
+        new_list.append(n**2)
+print(new_list)
+# this (mind blowing)
+second_list = [n**2 for n in range(10) if n % 2 == 0]
+print(second_list)
+
