@@ -38,6 +38,9 @@ print(squares)
 """
 numbers divisibles by 5 or 7
 """
+
+divisibles = [n if n % 5 == 0 else n % 7 == 0 for n in range(0, 99)]
+print(divisibles)
 mi_n = 1
 # divisibles = [n for n in range(0, 99) if n % 5 == 0]
 while mi_n != 0:
@@ -46,5 +49,5 @@ while mi_n != 0:
         divisibles = [mi_n for mi_n in range(0, 99) if mi_n % 5 == 0]
         print(divisibles)
     else:
-        divisibles_two = [mi_n for mi_n in range(0,99) if mi_n % 7 == 0]
+        divisibles_two = [mi_n for mi_n in range(0, 99) if mi_n % 7 == 0]
         print(divisibles_two)
