@@ -111,6 +111,7 @@ class BigRock(Asteroid):
         self.angle = random.randint(0, 360)
         self.velocity.dx = math.cos(math.radians(self.angle)) * BIG_ROCK_SPEED
         self.velocity.dy = math.sin(math.radians(self.angle)) * BIG_ROCK_SPEED
+        self.radius = BIG_ROCK_RADIUS
 
     def draw(self):
         # img = "images/meteorGrey_big1.png"
@@ -127,6 +128,31 @@ class BigRock(Asteroid):
 
         arcade.draw_texture_rectangle(x, y, width, height, texture, angle, alpha)
 
+    def advance(self):
+        super().advance()
+        self.angle += BIG_ROCK_SPIN
+
+    def break_apart(self, asteroids):
+        med1 = MediumRock()
+        med1.center.x = self.center.x
+        med1.center.y = self.center.y
+        med1.velocity.dy = self.velocity.dy + 2
+
+        med2 = MediumRock()
+        med2.center.x = self.center.x
+        med2.center.y = self.center.y
+        med2.velocity.dy = self.velocity.dy - 2
+
+        sm = SmallRock()
+        sm.center.x = self.center.x
+        sm.center.y = self.center.y
+        sm.velocity.dy = self.velocity.dy + 5
+
+        asteroids.append(med1)
+        asteroids.append(med2)
+        asteroids.append(sm)
+        self.alive = False
+
 
 class MediumRock(Asteroid):
     """
@@ -136,22 +162,46 @@ class MediumRock(Asteroid):
         super().__init__()
         self.center.x = random.uniform(SCREEN_WIDTH, SCREEN_WIDTH)
         self.center.y = random.uniform((SCREEN_HEIGHT / 2), SCREEN_WIDTH)
+        self.velocity.dx = math.cos(math.radians(self.angle)) * BIG_ROCK_SPEED
+        self.velocity.dy = math.sin(math.radians(self.angle)) * BIG_ROCK_SPEED
+        self.radius = MEDIUM_ROCK_RADIUS
 
     def draw(self):
-        img = 'images/meteorGrey_med1.png'
+        img = '/Users/OwnOS/PycharmProjects/cs241/week8/asteroids/images/meteorGrey_med1.png'
         texture = arcade.load_texture(img)
 
         width = texture.width
         height = texture.height
         # width = 340
         # height = 349
-        alpha = 1  # For transparency, 1 means not transparent
+        alpha = 255 # For transparency, 1 means not transparent
 
         x = self.center.x
         y = self.center.y
         angle = self.angle
 
         arcade.draw_texture_rectangle(x, y, width, height, texture, angle, alpha)
+
+    def advance(self):
+        super().advance()
+        self.angle += MEDIUM_ROCK_SPIN
+
+    def break_apart(self, asteroids):
+        sm = SmallRock()
+        sm.center.x = self.center.x
+        sm.center.y = self.center.y
+        sm.velocity.dy = self.velocity.dy + 1.5
+        sm.velocity.dx = self.velocity.dx + 1.5
+
+        sm1 = SmallRock()
+        sm1.center.x = self.center.x
+        sm1.center.y = self.center.y
+        sm1.velocity.dy = self.velocity.dy - 1.5
+        sm.velocity.dx = self.velocity.dx - 1.5
+
+        asteroids.append(sm)
+        asteroids.append(sm1)
+        self.alive = False
 
 
 class SmallRock(Asteroid):
@@ -162,20 +212,28 @@ class SmallRock(Asteroid):
         super().__init__()
         self.center.x = random.uniform(SCREEN_WIDTH, SCREEN_WIDTH)
         self.center.y = random.uniform((SCREEN_HEIGHT / 2), SCREEN_WIDTH)
+        self.radius = SMALL_ROCK_RADIUS
 
     def draw(self):
-        img = "images/meteorGrey_small1.png"
+        img = "/Users/OwnOS/PycharmProjects/cs241/week8/asteroids/images/meteorGrey_small1.png"
         texture = arcade.load_texture(img)
 
         width = texture.width
         height = texture.height
-        alpha = 1  # For transparency, 1 means not transparent
+        alpha = 255  # For transparency, 1 means not transparent
 
         x = self.center.x
         y = self.center.y
         angle = self.angle
 
         arcade.draw_texture_rectangle(x, y, width, height, texture, angle, alpha)
+
+    def advance(self):
+        super().advance()
+        self.angle += SMALL_ROCK_SPIN
+
+    def break_apart(self, asteroids):
+        self.alive = False
 
 
 class Ship(FlyingObject):
@@ -279,6 +337,8 @@ class Game(arcade.Window):
         # TODO: declare anything here you need the game class to track
         for asteroid in range(INITIAL_ROCK_COUNT):
             big_asteroid = BigRock()
+            medium_asteroid = MediumRock()
+            small_asteroid = SmallRock()
             self.asteroids.append(big_asteroid)
 
         self.ship = Ship()
@@ -309,6 +369,34 @@ class Game(arcade.Window):
             if not bullet.alive:
                 self.bullets.remove(bullet)
 
+        for asteroid in self.asteroids:
+            if not asteroid.alive:
+                self.asteroids.remove(asteroid)
+
+    def check_collisions(self):
+        for bullet in self.bullets:
+            for asteroid in self.asteroids:
+                if bullet.alive and asteroid.alive:
+                    distance_x = abs(asteroid.center.x - bullet.center.x)
+                    distance_y = abs(asteroid.center.y - bullet.center.y)
+                    max_dist = asteroid.radius + bullet.radius
+                    if distance_x < max_dist and  distance_y < max_dist:
+                        # the two objects hit
+                        print('Bang!! Asteroid and Bullet Collision')
+                        bullet.alive = False
+                        asteroid.break_apart(self.asteroids)
+                        asteroid.alive = False
+
+        for asteroid in self.asteroids:
+            if self.ship.alive and asteroid.alive:
+                distance_x = abs(asteroid.center.x - self.ship.center.x)
+                distance_y = abs(asteroid.center.y - self.ship.center.y)
+                max_dist = asteroid.radius + self.ship.radius
+                if distance_x < max_dist and distance_y < max_dist:
+                    # the two objects hit
+                    self.ship.alive = False
+                    asteroid.alive = False
+
     def update(self, delta_time):
         """
         Update each object in the game.
@@ -326,9 +414,11 @@ class Game(arcade.Window):
             bullet.advance()
 
         self.remove_notAliveObjects()
+        self.check_collisions()
         # TODO: Check for collisions
 
         self.ship.draw()
+<<<<<<< HEAD
     # def create_asteroids(self):
     #     asteroids = [
     #         BigRock()
@@ -340,6 +430,8 @@ class Game(arcade.Window):
     #         asteroids[asteroid_index]
     #     )
     #     pass
+=======
+>>>>>>> 50fd76e879a53672571266c15e9f7ccf957673b8
 
     def check_keys(self):
         """
