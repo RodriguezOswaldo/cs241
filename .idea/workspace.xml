@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3e0bf680-33ab-4a1b-988d-25b940ab8f73" name="Default Changelist" comment="Lists methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/week10/strings.py" beforeDir="false" afterPath="$PROJECT_DIR$/week10/strings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/week8/asteroids/Asteroids.py" beforeDir="false" afterPath="$PROJECT_DIR$/week8/asteroids/Asteroids.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +191,15 @@
       <workItem from="1623778888473" duration="344000" />
       <workItem from="1623806384044" duration="334000" />
       <workItem from="1623814935384" duration="206000" />
-      <workItem from="1624675464581" duration="1882000" />
+      <workItem from="1624675464581" duration="2963000" />
+      <workItem from="1624724361668" duration="748000" />
+      <workItem from="1625005040478" duration="568000" />
+      <workItem from="1625018140902" duration="598000" />
+      <workItem from="1625054575662" duration="1996000" />
+      <workItem from="1625087510886" duration="598000" />
+      <workItem from="1625140577708" duration="598000" />
+      <workItem from="1625188896240" duration="598000" />
+      <workItem from="1625227279898" duration="599000" />
     </task>
     <task id="LOCAL-00001" summary="new files">
       <created>1623957812995</created>
@@ -286,7 +294,7 @@
     <SUITE FILE_PATH="coverage/cs241$treenode.coverage" NAME="treenode Coverage Results" MODIFIED="1623470404943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week8" />
     <SUITE FILE_PATH="coverage/cs241$hash_tables.coverage" NAME="hash_tables Coverage Results" MODIFIED="1624066836932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week9" />
     <SUITE FILE_PATH="coverage/cs241$getterssetters.coverage" NAME="getterssetters Coverage Results" MODIFIED="1623208864509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week8" />
-    <SUITE FILE_PATH="coverage/cs241$strings.coverage" NAME="strings Coverage Results" MODIFIED="1624677540098" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week10" />
+    <SUITE FILE_PATH="coverage/cs241$strings.coverage" NAME="strings Coverage Results" MODIFIED="1624677604028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week10" />
     <SUITE FILE_PATH="coverage/cs241$practice.coverage" NAME="practice Coverage Results" MODIFIED="1620785120718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week4" />
     <SUITE FILE_PATH="coverage/cs241$lists.coverage" NAME="lists Coverage Results" MODIFIED="1624675852761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week10" />
     <SUITE FILE_PATH="coverage/cs241$practice_classes.coverage" NAME="practice_classes Coverage Results" MODIFIED="1620789514902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/week3" />

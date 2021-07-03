@@ -283,7 +283,6 @@ class Game(arcade.Window):
 
         self.ship = Ship()
 
-
     def on_draw(self):
         """
         Called automatically by the arcade framework.
@@ -342,7 +341,6 @@ class Game(arcade.Window):
     #     )
     #     pass
 
-
     def check_keys(self):
         """
         This function checks for keys that are being held down.
@@ -377,7 +375,6 @@ class Game(arcade.Window):
                 bullet = Bullet(self.ship.angle, self.ship.center.x, self.ship.center.y)
                 self.bullets.append(bullet)
                 bullet.fire()
-
 
     def on_key_release(self, key: int, modifiers: int):
         """
